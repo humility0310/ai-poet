@@ -1,6 +1,6 @@
-# __import__('pysqlite3')
-# import sys
-# sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -59,8 +59,8 @@ if uploaded_file is not None:
     )
 
     #캐시 삭제
-    # import chromadb
-    # chromadb.api.client.SharedClient.clear_system_cache()
+    import chromadb
+    chromadb.api.client.SharedClient.clear_system_cache()
 
     #Chroma DB
     db = Chroma.from_documents(texts, embeddings_model)
